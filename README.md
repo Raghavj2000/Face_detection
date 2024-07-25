@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+Face Detection App
+Overview
+This React application leverages the MediaPipe Face Landmarker to detect facial features and determine if a face is straight. The application opens the camera, performs real-time facial detection, and allows capturing and downloading images if certain conditions are met.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+Camera Integration: Opens the camera to capture real-time video.
+Face Detection: Uses MediaPipe's Face Landmarker to detect facial landmarks.
+Face Orientation Check: Verifies if the face is straight before allowing image capture.
+Image Capture: Takes a screenshot of the video feed and crops it to a square.
+Image Download: Provides an option to download the captured image.
+Installation
+To run this application, you'll need to have Node.js and npm installed. Follow these steps to set up the project:
 
-## Available Scripts
+Clone the repository:
 
-In the project directory, you can run:
+bash
+Copy code
+git clone https://github.com/your-repo/face-detection-app.git
+cd face-detection-app
+Install dependencies:
 
-### `npm start`
+bash
+Copy code
+npm install
+Run the application:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+bash
+Copy code
+npm start
+This will start the development server and open the application in your default browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Usage
+Open or Close Camera:
 
-### `npm test`
+Click the "Open camera" button to start the camera feed.
+Click "Close camera" to stop the camera.
+Capture Image:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ensure your face is visible and straight in the camera view.
+Click the "Capture Image" button to take a screenshot.
+If the face is not straight or multiple faces are detected, an alert will inform you.
+Download Image:
 
-### `npm run build`
+After capturing an image, it will be displayed on the screen.
+Click the "Download Image" button to save the captured image to your device.
+Code Explanation
+CameraFeed Component:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Manages the camera feed and face detection.
+Uses MediaPipe's Face Landmarker to detect facial landmarks.
+Implements logic to check if the face is straight and handles image capture and cropping.
+State Variables:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+cameraOpen: Tracks whether the camera is open.
+faceLandmarker: Holds the FaceLandmarker instance.
+faceResult: Stores the result of face detection.
+webcamRef: Reference to the webcam component.
+isVideoReady: Indicates if the video feed is ready for processing.
+capturedImage: Holds the data URL of the captured image.
+Functions:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+initializeFaceLandmarker: Initializes the face landmarker model.
+detectFaces: Performs face detection and updates the state.
+isFaceStraight: Checks if the face is straight based on blendshape scores.
+cropToSquare: Crops the captured image to a square.
+captureImage: Captures the image if conditions are met.
+downloadImage: Allows downloading the captured image.
+Dependencies
+React: JavaScript library for building user interfaces.
+react-webcam: A React component for accessing the webcam.
+@mediapipe/tasks-vision: MediaPipe library for face detection.
+Contributing
+Feel free to submit issues or pull requests. For major changes or improvements, please open an issue first to discuss the changes you would like to make.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
